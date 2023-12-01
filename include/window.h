@@ -3,7 +3,7 @@
 
 
 namespace sf {
-    class RenderWindow;
+    class Window;
 };
 
 #include <string>
@@ -21,7 +21,7 @@ struct Window {
     void update(float delta_time);
 
 
-    sf::RenderWindow* m_window;
+    sf::Window* m_window;
     Triangle* m_triangle;
     bool m_running;
 

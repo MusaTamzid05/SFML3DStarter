@@ -9,7 +9,19 @@
 
 Window::Window(const std::string& title):m_running(false) {
 
-    m_window = new sf::RenderWindow(sf::VideoMode(WIDTH, HEIGHT), title);
+    sf::ContextSettings settings;
+    settings.depthBits = 24;
+    settings.stencilBits = 8;
+    settings.antialiasingLevel = 4;
+    settings.majorVersion = 3;
+    settings.minorVersion = 0;
+
+    m_window = new sf::RenderWindow(
+            sf::VideoMode(WIDTH, HEIGHT),
+            title,
+            sf::Style::Default,
+            settings
+            );
     GLenum err = glewInit();
 
     if(err != GLEW_OK) {
