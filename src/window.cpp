@@ -3,6 +3,7 @@
 #include "headers.h"
 #include "consts.h"
 #include "triangle.h"
+#include "cube.h"
 #include "camera.h"
 
 
@@ -34,7 +35,7 @@ Window::Window(const std::string& title):m_running(false) {
     glEnable(GL_DEPTH_TEST);
     
 
-    m_triangle = new Triangle();
+    m_triangle = new Cube();
     Camera::get_instance()->init(glm::vec3(0.0f, 0.0f, 4.0f));
     first_mouse_move = true;
 

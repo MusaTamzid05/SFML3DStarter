@@ -13,6 +13,7 @@ SET(SOURCE_FILES
     src/triangle.cpp
     src/camera.cpp
     src/entity.cpp
+    src/cube.cpp
     )
 
 

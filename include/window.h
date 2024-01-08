@@ -8,7 +8,7 @@ namespace sf {
 
 #include <string>
 
-struct Triangle;
+struct Entity;
 
 struct Window {
     Window(const std::string& title="Window");
@@ -22,7 +22,7 @@ struct Window {
 
 
     sf::Window* m_window;
-    Triangle* m_triangle;
+    Entity* m_triangle;
     bool m_running;
 
     bool first_mouse_move;
