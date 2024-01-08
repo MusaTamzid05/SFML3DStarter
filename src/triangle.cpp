@@ -7,7 +7,7 @@
 //#include <glm/gtx/string_cast.hpp>
 
 
-Triangle::Triangle() {
+Triangle::Triangle():Entity() {
     m_shader = new Shader("../shaders/triangle.vs", "../shaders/triangle.fs");
 
     // mesh initialization
@@ -74,6 +74,8 @@ void Triangle::render() {
 
 }
 
+/*
+
 void Triangle::update() {
     m_shader->use();
 
@@ -86,3 +88,4 @@ void Triangle::update() {
 
 
 }
+*/
