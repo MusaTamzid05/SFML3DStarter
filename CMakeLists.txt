@@ -14,6 +14,7 @@ SET(SOURCE_FILES
     src/camera.cpp
     src/entity.cpp
     src/cube.cpp
+    src/rectangle.cpp
     )
 
 
