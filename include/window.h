@@ -22,7 +22,7 @@ struct Window {
 
 
     sf::Window* m_window;
-    Entity* m_rect;
+    Entity* m_cube;
     bool m_running;
 
     bool first_mouse_move;
