@@ -3,17 +3,18 @@
 #include <vector>
 #include "headers.h"
 #include "camera.h"
+#include "utils.h"
 
 Rectangle::Rectangle() {
-    m_shader = new Shader("../shaders/triangle.vs", "../shaders/triangle.fs");
+    m_shader = new Shader("../shaders/rect.vs", "../shaders/rect.fs");
 
     // mesh initialization
 
     std::vector<float> vertices({
-            -1.0f, 1.0f, 0.0f,  // top left
-             -1.0f, -1.0f, 0.0f,  // bottom left
-             1.0f, -1.0f, 0.0f,  // bottom right
-             1.0f, 1.0f, 0.0f,  // top right
+            -1.0f, 1.0f, 0.0f, 0.0f, 1.0f,  // top left
+             -1.0f, -1.0f, 0.0f, 0.0f, 0.0f,  // bottom left
+             1.0f, -1.0f, 0.0f, 1.0f, 0.0f,  // bottom right
+             1.0f, 1.0f, 0.0f, 1.0, 1.0f  // top right
             });
 
     std::vector<unsigned int> indices({
@@ -34,8 +35,11 @@ Rectangle::Rectangle() {
             GL_STATIC_DRAW
             );
 
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)0);
     glEnableVertexAttribArray(0);
+
+    glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)(3 * sizeof(float)));
+    glEnableVertexAttribArray(1);
 
     glGenBuffers(1, &EBO);
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
@@ -51,10 +55,7 @@ Rectangle::Rectangle() {
     glm::mat4 projection = Camera::get_instance()->get_projection();
     m_shader->set_mat4("projection", projection);
 
-
-    
-
-
+    texture_id = load_texture("../resources/number.png");
 
 
 }
@@ -64,6 +65,9 @@ Rectangle::~Rectangle() {
 }
 
 void Rectangle::render() {
+
+    glActiveTexture(GL_TEXTURE0);
+    glBindTexture(GL_TEXTURE_2D, texture_id);
     m_shader->use();
     glBindVertexArray(VAO);
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);

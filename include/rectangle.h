@@ -15,6 +15,8 @@ struct Rectangle : Entity {
     unsigned int VBO;
     unsigned int EBO;
 
+    unsigned int texture_id;
+
 
 
 };
